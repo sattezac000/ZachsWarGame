@@ -1,6 +1,6 @@
 public class Card {
 
-    private String suitList[] = {"Club", "Spade", "Heart", "Diamond"};
+    private String suitList[] = {"Clubs", "Spades", "Hearts", "Diamonds"};
     private int rank;
     private String suit;
 
@@ -13,10 +13,10 @@ public class Card {
         suit = suitList[0];
     }
 
-    public Card(String suit, int rank){
+    public Card(int suit, int rank){
 
-        this.suit = suit;
-        this.rank = rank;
+        setSuit(suit);
+        setRank(rank);
     }
 
     //Method
@@ -38,12 +38,47 @@ public class Card {
     }
 
     public void setRank(int rank) {
-        this.rank = rank;
+        if (rank > 13 || rank < 1) {
+            System.out.println("INVALID RANK");
+        }
+        else
+            this.rank = rank;
     }
 
-    public String toString(){
 
-        String output = getRank() + " of " + getSuit();
+    public String toString(){
+        String rankStr = "";
+
+        switch(rank) {
+            case 1: rankStr = "Ace";
+                break;
+            case 2: rankStr = "2";
+                break;
+            case 3: rankStr = "3";
+                break;
+            case 4: rankStr = "4";
+                break;
+            case 5: rankStr = "5";
+                break;
+            case 6: rankStr = "6";
+                break;
+            case 7: rankStr = "7";
+                break;
+            case 8: rankStr = "8";
+                break;
+            case 9: rankStr = "9";
+                break;
+            case 10: rankStr = "10";
+                break;
+            case 11: rankStr = "Jack";
+                break;
+            case 12: rankStr = "Queen";
+                break;
+            case 13: rankStr = "King";
+                break;
+        }
+
+        String output = rankStr + " of " + getSuit();
 
         return output;
 
